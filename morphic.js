@@ -10114,16 +10114,6 @@ WorldMorph.prototype.createVirtualKeyboard = function () {
     this.virtualKeyboard.autocapitalize = "none"; // iOS specific
 */
     document.body.appendChild(this.virtualKeyboard);
-};
-
-
-WorldMorph.prototype.initVirtualKeyboard = function () {
-    var myself = this;
-
-    if (!MorphicPreferences.isTouchDevice
-            || !MorphicPreferences.useVirtualKeyboard) {
-        return;
-    }
 
     this.virtualKeyboard.addEventListener(
         "keydown",
@@ -10177,6 +10167,12 @@ WorldMorph.prototype.initVirtualKeyboard = function () {
         },
         false
     );
+
+};
+
+
+WorldMorph.prototype.initVirtualKeyboard = function () {
+    return;
 };
 
 WorldMorph.prototype.initEventListeners = function () {
@@ -10792,8 +10788,6 @@ WorldMorph.prototype.stopEditing = function () {
     this.keyboardReceiver = null;
     if (this.virtualKeyboard) {
         this.virtualKeyboard.blur();
-        document.body.removeChild(this.virtualKeyboard);
-        this.virtualKeyboard = null;
     }
     this.worldCanvas.focus();
 };
