@@ -9509,7 +9509,7 @@ HandMorph.prototype.processTouchStart = function (event) {
         );
         this.processMouseMove(event.touches[0]); // update my position
         this.processMouseDown({button: 0});
-        event.preventDefault();
+        //event.preventDefault();
     }
 };
 
