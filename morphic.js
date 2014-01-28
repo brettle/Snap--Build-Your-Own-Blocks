@@ -10110,7 +10110,7 @@ WorldMorph.prototype.createVirtualKeyboard = function () {
     this.virtualKeyboard.style.height = "0px";
     this.virtualKeyboard.autocapitalize = "none"; // iOS specific
     document.body.appendChild(this.virtualKeyboard);
-
+};
 
 
 WorldMorph.prototype.initVirtualKeyboard = function () {
