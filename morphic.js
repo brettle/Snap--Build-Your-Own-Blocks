@@ -9951,6 +9951,8 @@ WorldMorph.prototype.init = function (aCanvas, fillPage) {
     this.virtualKeyboard = null;
 
     this.initEventListeners();
+    
+    this.createVirtualKeyboard();
 };
 
 // World Morph display:
@@ -10088,16 +10090,12 @@ WorldMorph.prototype.getGlobalPixelColor = function (point) {
 
 // WorldMorph events:
 
-WorldMorph.prototype.initVirtualKeyboard = function () {
+WorldMorph.prototype.createVirtualKeyboard = function () {
     var myself = this;
 
     if (this.virtualKeyboard) {
         document.body.removeChild(this.virtualKeyboard);
         this.virtualKeyboard = null;
-    }
-    if (!MorphicPreferences.isTouchDevice
-            || !MorphicPreferences.useVirtualKeyboard) {
-        return;
     }
     this.virtualKeyboard = document.createElement("input");
     this.virtualKeyboard.type = "text";
@@ -10112,6 +10110,16 @@ WorldMorph.prototype.initVirtualKeyboard = function () {
     this.virtualKeyboard.style.height = "0px";
     this.virtualKeyboard.autocapitalize = "none"; // iOS specific
     document.body.appendChild(this.virtualKeyboard);
+
+
+
+WorldMorph.prototype.initVirtualKeyboard = function () {
+    var myself = this;
+
+    if (!MorphicPreferences.isTouchDevice
+            || !MorphicPreferences.useVirtualKeyboard) {
+        return;
+    }
 
     this.virtualKeyboard.addEventListener(
         "keydown",
