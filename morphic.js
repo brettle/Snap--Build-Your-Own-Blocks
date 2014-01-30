@@ -10104,20 +10104,16 @@ WorldMorph.prototype.createVirtualKeyboard = function () {
     }
     this.virtualKeyboard = document.createElement("input");
     this.virtualKeyboard.type = "text";
-/*
     this.virtualKeyboard.style.color = "transparent";
     this.virtualKeyboard.style.backgroundColor = "transparent";
     this.virtualKeyboard.style.border = "none";
     this.virtualKeyboard.style.outline = "none";
-*/
     this.virtualKeyboard.style.position = "absolute";
     this.virtualKeyboard.style.top = "0px";
     this.virtualKeyboard.style.left = "0px";
-/*
     this.virtualKeyboard.style.width = "0px";
     this.virtualKeyboard.style.height = "0px";
     this.virtualKeyboard.autocapitalize = "none"; // iOS specific
-*/
     document.body.appendChild(this.virtualKeyboard);
 
     this.virtualKeyboard.addEventListener(
@@ -10730,10 +10726,8 @@ WorldMorph.prototype.edit = function (aStringOrTextMorph) {
     this.initVirtualKeyboard();
     if (MorphicPreferences.isTouchDevice
             && MorphicPreferences.useVirtualKeyboard) {
-/*
         this.virtualKeyboard.style.top = this.cursor.top() + pos.y + "px";
         this.virtualKeyboard.style.left = this.cursor.left() + pos.x + "px";
-*/
         this.virtualKeyboard.focus();
         this.hand.virtualKeyboardRequested = true;
     }
