@@ -9298,6 +9298,7 @@ HandMorph.prototype.init = function (aWorld) {
     this.grabOrigin = null;
     this.temporaries = [];
     this.touchHoldTimeout = null;
+    this.virtualKeyboardRequested = false;
 };
 
 HandMorph.prototype.changed = function () {
@@ -9507,9 +9508,13 @@ HandMorph.prototype.processTouchStart = function (event) {
             },
             400
         );
+        this.virtualKeyboardRequested = false;
         this.processMouseMove(event.touches[0]); // update my position
         this.processMouseDown({button: 0});
-        //event.preventDefault();
+        // Don't prevent the default action of displaying the virtual keyboard if event
+        // processing requested it.
+        if (!this.virtualKeyboardRequested)
+            event.preventDefault();
     }
 };
 
@@ -10730,6 +10735,7 @@ WorldMorph.prototype.edit = function (aStringOrTextMorph) {
         this.virtualKeyboard.style.left = this.cursor.left() + pos.x + "px";
 */
         this.virtualKeyboard.focus();
+        this.hand.virtualKeyboardRequested = true;
     }
 
     if (MorphicPreferences.useSliderForInput) {
