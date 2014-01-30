@@ -10726,8 +10726,10 @@ WorldMorph.prototype.edit = function (aStringOrTextMorph) {
     this.initVirtualKeyboard();
     if (MorphicPreferences.isTouchDevice
             && MorphicPreferences.useVirtualKeyboard) {
+/*
         this.virtualKeyboard.style.top = this.cursor.top() + pos.y + "px";
         this.virtualKeyboard.style.left = this.cursor.left() + pos.x + "px";
+*/
         this.virtualKeyboard.focus();
         this.hand.virtualKeyboardRequested = true;
     }
